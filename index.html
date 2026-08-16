@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Auto Detailing | Premium Car Wash & Valet</title>
+    <style>
+        /* CSS Variables for Easy Theming */
+        :root {
+            --primary: #f59e0b; /* Amber/Gold for luxury feel */
+            --primary-hover: #d97706;
+            --dark: #111827;
+            --darker: #030712;
+            --light: #f9fafb;
+            --gray: #4b5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(3, 7, 18, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.9)), 
+                        url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: white;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+        }
+
+        .trust-badge {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Services & Pricing */
+        .services {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--darker);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .price-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .popular {
+            border: 2px solid var(--primary);
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.15);
+        }
+
+        .popular-badge {
+            background: var(--primary);
+            color: white;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            color: var(--darker);
+        }
+
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--darker);
+            color: white;
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+
+        footer {
+            background: #000;
+            color: #6b7280;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .contact { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Apex<span>Detail</span></a>
+        <a href="#booking" class="btn">Book Now</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>That "New Car" Feeling.<br>Delivered.</h1>
+            <p>Premium mobile auto detailing and paint correction. We come to your home or office, leaving your vehicle looking showroom flawless.</p>
+            <a href="#services" class="btn" style="padding: 1rem 2rem; font-size: 1.1rem;">View Packages</a>
+            <div class="trust-badge">
+                ⭐⭐⭐⭐⭐ 4.9/5 from 120+ happy drivers in Kempton Park
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Choose Your Shine</h2>
+        <p>Transparent pricing. No hidden fees. 100% Satisfaction Guaranteed.</p>
+        
+        <div class="pricing-grid">
+            <!-- Basic Package -->
+            <div class="price-card">
+                <h3>Express Maintenance</h3>
+                <div class="price">R450</div>
+                <p>Perfect for a quick refresh between deep cleans.</p>
+                <ul class="features">
+                    <li>Exterior foam cannon wash</li>
+                    <li>Wheel & tire detail</li>
+                    <li>Interior vacuum & wipe down</li>
+                    <li>Windows cleaned inside & out</li>
+                </ul>
+                <a href="#booking" class="btn" style="width: 100%; margin-top: 1rem;">Book Express</a>
+            </div>
+
+            <!-- Premium Package (The Decoy/Anchor) -->
+            <div class="price-card popular">
+                <div class="popular-badge">MOST POPULAR</div>
+                <h3>The Flawless Finish</h3>
+                <div class="price">R950</div>
+                <p>A comprehensive reset for your vehicle's interior and exterior.</p>
+                <ul class="features">
+                    <li><strong>Everything in Express, plus:</strong></li>
+                    <li>Clay bar treatment</li>
+                    <li>6-month paint sealant applied</li>
+                    <li>Deep carpet & seat extraction</li>
+                    <li>Leather conditioning</li>
+                </ul>
+                <a href="#booking" class="btn" style="width: 100%; margin-top: 1rem;">Book Flawless</a>
+            </div>
+
+            <!-- Ceramic Package -->
+            <div class="price-card">
+                <h3>Ceramic Shield</h3>
+                <div class="price">R2800</div>
+                <p>Ultimate protection and mirror-like gloss for your investment.</p>
+                <ul class="features">
+                    <li><strong>Everything in Flawless, plus:</strong></li>
+                    <li>Single-stage paint correction (removes swirls)</li>
+                    <li>3-Year Ceramic Coating</li>
+                    <li>Engine bay detail</li>
+                </ul>
+                <a href="#booking" class="btn" style="width: 100%; margin-top: 1rem; background: var(--dark); color: white;">Book Ceramic</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="contact">
+        <div class="contact-info">
+            <h2>Ready for a showroom shine?</h2>
+            <p style="margin-bottom: 2rem;">Fill out the form to request a slot, or message us directly on WhatsApp for immediate booking.</p>
+            
+            <h3>📍 Service Area</h3>
+            <p>Mobile service strictly covering Kempton Park, Midstream, and surrounding Gauteng estates.</p>
+            
+            <h3 style="margin-top: 2rem;">🕒 Operating Hours</h3>
+            <p>Monday - Saturday: 07:00 - 17:00</p>
+            <p>Sunday: Closed</p>
+
+            <h3 style="margin-top: 2rem;">🛡️ Our Guarantee</h3>
+            <p>If you aren't thrilled with the detail, we'll re-clean it for free.</p>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/your_form_id" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number / WhatsApp" required>
+            <select name="package" required>
+                <option value="" disabled selected>Select a Package...</option>
+                <option value="Express">Express Maintenance (R450)</option>
+                <option value="Flawless">The Flawless Finish (R950)</option>
+                <option value="Ceramic">Ceramic Shield (R2800)</option>
+            </select>
+            <textarea name="message" rows="4" placeholder="Vehicle Make/Model & Any special requests..."></textarea>
+            <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem;">Request Booking</button>
+            <p style="font-size: 0.8rem; color: #9ca3af; text-align: center; margin-top: 1rem;">*No payment required until the job is done.</p>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Apex Auto Detailing. Built for speed and performance.</p>
+    </footer>
+
+</body>
+</html>
